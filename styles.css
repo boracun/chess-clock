@@ -1,6 +1,7 @@
 .chess-clock {
     height: 500px;
     width: 100%;
+    padding: 0%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -8,7 +9,7 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;    /*Fix the font later*/
     font-weight: normal;
-    font-size: 72pt;
+    font-size: 100pt;
 }
 
 .black {
@@ -25,4 +26,9 @@
     background-color: gray;
     color: black;
     text-align: center;
+}
+
+p {
+    margin-bottom: 0%;
+    margin-top: 5%;
 }
