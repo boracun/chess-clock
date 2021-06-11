@@ -1,12 +1,38 @@
 const startingMinutes = 3;
 let blackTime = startingMinutes * 60;
 let whiteTime = startingMinutes * 60;
+let turnOfWhite = true;
 
 const blackClockElement = document.getElementById('black-countdown');
 const whiteClockElement = document.getElementById('white-countdown');
 
-setInterval(decrementBlackTime, 1000);
-setInterval(decrementWhiteTime, 1000);
+const blackSpace = document.getElementById('black');
+const whiteSpace = document.getElementById('white');
+
+blackSpace.addEventListener('click', function() {
+    turnOfWhite = true;
+    document.getElementById('black-turn').style.color = "#292929";
+    document.getElementById('white-turn').style.color = "green";
+});
+
+whiteSpace.addEventListener('click', function() {
+    turnOfWhite = false;
+    document.getElementById('black-turn').style.color = "green";
+    document.getElementById('white-turn').style.color = "white";
+});
+
+document.getElementById('black-turn').style.color = "#292929";
+document.getElementById('white-turn').style.color = "green";
+setInterval(manageClock, 1000);
+
+function manageClock() {
+    if(turnOfWhite) {
+        decrementWhiteTime();
+    }
+    else {
+        decrementBlackTime();
+    }
+}
 
 function decrementBlackTime() {
     if(blackTime !== 0) {
