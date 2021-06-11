@@ -23,7 +23,8 @@ whiteSpace.addEventListener('click', function() {
 
 document.getElementById('black-turn').style.color = "#292929";
 document.getElementById('white-turn').style.color = "green";
-setInterval(manageClock, 1000);
+
+var intervalId = setInterval(manageClock, 1000);
 
 function manageClock() {
     if(turnOfWhite) {
@@ -38,6 +39,10 @@ function decrementBlackTime() {
     if(blackTime !== 0) {
         blackTime--;
     }
+    else {
+        clearInterval(intervalId);
+        alert("White won on time");
+    }
     const minutes = Math.floor(blackTime / 60);
     let seconds = blackTime % 60;
 
@@ -51,6 +56,10 @@ function decrementBlackTime() {
 function decrementWhiteTime() {
     if(whiteTime !== 0) {
         whiteTime--;
+    }
+    else {
+        clearInterval(intervalId);
+        alert("Black won on time");
     }
     const minutes = Math.floor(whiteTime / 60);
     let seconds = whiteTime % 60;
