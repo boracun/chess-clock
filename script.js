@@ -1,6 +1,6 @@
 const startingMinutes = 3;
-let blackTime = startingMinutes * 60;
-let whiteTime = startingMinutes * 60;
+let blackTime = startingMinutes * 60 * 1000;
+let whiteTime = startingMinutes * 60 * 1000;
 let turnOfWhite = true;
 
 const blackClockElement = document.getElementById('black-countdown');
@@ -24,7 +24,7 @@ whiteSpace.addEventListener('click', function() {
 document.getElementById('black-turn').style.color = "#292929";
 document.getElementById('white-turn').style.color = "green";
 
-var intervalId = setInterval(manageClock, 1000);
+var intervalId = setInterval(manageClock, 1);
 
 function manageClock() {
     if(turnOfWhite) {
@@ -43,8 +43,8 @@ function decrementBlackTime() {
         clearInterval(intervalId);
         alert("White won on time");
     }
-    const minutes = Math.floor(blackTime / 60);
-    let seconds = blackTime % 60;
+    const minutes = Math.floor((blackTime / 1000) / 60);
+    let seconds = Math.floor(blackTime / 1000) % 60;
 
     if (seconds < 10) {
         seconds = '0' + seconds;
@@ -61,8 +61,8 @@ function decrementWhiteTime() {
         clearInterval(intervalId);
         alert("Black won on time");
     }
-    const minutes = Math.floor(whiteTime / 60);
-    let seconds = whiteTime % 60;
+    const minutes = Math.floor(whiteTime / 1000 / 60);
+    let seconds = Math.floor(whiteTime / 1000) % 60;
 
     if (seconds < 10) {
         seconds = '0' + seconds;
